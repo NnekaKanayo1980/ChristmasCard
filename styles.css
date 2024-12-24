@@ -1,0 +1,123 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(135deg, #ff7b54, #d92027);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Snow and Santa Containers */
+.snow-container, .santa-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall 5s linear infinite;
+}
+
+.santa {
+    position: absolute;
+    top: -50px;
+    width: 80px; /* Santa size */
+    height: auto;
+    animation: santaFall 7s linear infinite;
+    z-index: 2;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes santaFall {
+    to {
+        transform: translateY(100vh) translateX(-100px);
+    }
+}
+
+/* Card Styles */
+.card {
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+    z-index: 3; /* Above snowfall and Santa */
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.6s;
+}
+
+.card-front {
+    background: green;
+    color: white;
+}
+
+.card-back {
+    background: #457b9d;
+    color: #fff;
+    transform: rotateY(180deg);
+}
+
+/* Flip Animation */
+.card:hover .card-front {
+    transform: rotateY(-180deg);
+}
+
+.card:hover .card-back {
+    transform: rotateY(0deg);
+}
+
+/* Styling for the Names */
+.names {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.2em;
+    text-align: center;
+    color: white; /* Same color for all names */
+}
+
+.names li {
+    margin: 3px 0;
+}
+
+/* Profile Picture Styling */
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin-top: 10px;
+}
